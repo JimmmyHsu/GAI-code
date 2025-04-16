@@ -76,7 +76,7 @@ class Normalize:
 
 
 class TeO6:
-    def __init__(self,train_step,batch_size=1024,epochs=300,learning_rate=1e-4,cluster=3,targetFolder='/rhome/jimmy0111/jimmy/TeO6/cluster_3/'):
+    def __init__(self,train_step,batch_size=1024,epochs=300,learning_rate=1e-4,cluster=3,targetFolder='/cluster_3/'):
         self.train_step = train_step   
         self.batch_size = batch_size
         self.epochs = epochs
@@ -87,12 +87,12 @@ class TeO6:
 
 
     def opendata(self,):
-        train = np.load('/rhome/jimmy0111/jimmy/TeO6/DATA/three_data.npz')
+        train = np.load('train_data.npz')
         self.train_data = train['data']
         train_label = train['label']
         self.train_label = keras.utils.to_categorical(train_label, self.cluster)
 
-        test = np.load('/rhome/jimmy0111/jimmy/TeO6/DATA/data.npz')
+        test = np.load('test_data.npz')
         self.test_data, self.X= test['data'], test['x']
 
         self.L = len(self.train_data[0])
